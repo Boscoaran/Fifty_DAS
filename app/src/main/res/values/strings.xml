@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Proyecto1</string>
+    <string name="Contraseña">Password</string>
+    <string name="Nombre">Name</string>
+    <string name="Acceder">Access</string>
+    <string name="Iniciar_sesion">Log in</string>
+    <string name="Registrarse">Sign up</string>
+    <string name="error_usuario_existe">A user with that username already exists</string>
+    <string name="Aceptar">Accept</string>
+    <string name="error_contraseña_incorrecta">Incorrect password</string>
+    <string name="erro_no_existe_usuario">No user found with that username</string>
+    <string name="ajustes">Settings</string>
+    <string name="vote">Vote</string>
+    <string name="Amigos">Friends</string>
+    <string name="Buscar">Search</string>
+    <string name="PregAñadirAmigo">Do you want to add this user to your friends?</string>
+    <string name="AñadirAmigo">Add friend</string>
+    <string name="Volver">Back</string>
+    <string name="YES">YES</string>
+    <string name="Preg_accept">Do you want to accept this user as a friend?</string>
+    <string name="vota_notif">Time to vote!!</string>
+    <string name="Ingles">English</string>
+    <string name="Español">Spanish</string>
+    <string name="Fondo">Background color</string>
+    <string name="Color">Main color</string>
+    <string name="Azul">Blue</string>
+    <string name="Naranja">Orange</string>
+    <string name="Negro">Black</string>
+    <string name="Verde">Green</string>
+    <string name="Idioma">Language</string>
+    <string name="Guardar">Save</string>
+</resources>

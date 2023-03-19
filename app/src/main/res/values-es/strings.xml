@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Proyecto1</string>
+    <string name="Contraseña">Contraseña</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Acceder">Acceder</string>
+    <string name="Iniciar_sesion">Iniciar sesión</string>
+    <string name="Registrarse">Registrarse</string>
+    <string name="error_usuario_existe">Ya existe un usuario con ese nombre de usuario</string>
+    <string name="Aceptar">Aceptar</string>
+    <string name="error_contraseña_incorrecta">Contraseña incorrecta</string>
+    <string name="erro_no_existe_usuario">No se ha encontrado ningún usuario con ese nombre de usuario</string>
+    <string name="ajustes">Ajustes</string>
+    <string name="vote">Votar</string>
+    <string name="Amigos">Amigos</string>
+    <string name="Buscar">Buscar</string>
+    <string name="PregAñadirAmigo">¿Quieres añadir a este usuario a tus amigo?</string>
+    <string name="AñadirAmigo">Añadir amigo</string>
+    <string name="Volver">Volver</string>
+    <string name="YES">SI</string>
+    <string name="Preg_accept">¿Qieres acceptar a este usuario como amigo?</string>
+    <string name="vota_notif">Hora de votar!!</string>
+    <string name="Ingles">Inglés</string>
+    <string name="Español">Español</string>
+    <string name="Fondo">Color de fondo</string>
+    <string name="Color">Color principal</string>
+    <string name="Azul">Azul</string>
+    <string name="Naranja">Naranja</string>
+    <string name="Negro">Negro</string>
+    <string name="Verde">Verde</string>
+    <string name="Idioma">Idioma</string>
+    <string name="Guardar">Guardar</string>
+</resources>

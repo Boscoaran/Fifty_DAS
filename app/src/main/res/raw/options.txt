@@ -1,0 +1,34 @@
+Asignaturas
+15/03/2023
+Análisis Matemático
+Fundamentos de Tecnología de Computadores
+Matemática Discreta
+Principios de Diseño de Sistemas Digitales
+Programación Básica
+Cálculo
+Estructura de Computadores
+Metodología de la Programación
+Programación Modular y Orientación a Objetos
+Álgebra
+Arquitectura de Computadores
+Economía y Administración de Empresas
+Estructuras de Datos y Algoritmos
+Lenguajes, Computación y Sistemas Inteligentes
+Métodos Estadísticos de la Ingeniería
+Bases de Datos
+Ingeniería del Software
+Introducción a las Redes de Computadores
+Introducción a los Sistemas Operativos
+Investigación Operativa
+Análisis y Diseño de Sistemas de Información
+Diseño de Bases de Datos
+Organización de la Producción
+Sistemas de Gestión Integrada
+Sistemas de Gestión de Seguridad de Sistemas de Información
+Administración de Bases de Datos
+Gestión de Proyectos
+Sistemas Web
+Sistemas de Apoyo a la Decisión
+Software de Gestión de Empresa
+Administración de Sistemas
+Minería de Datos
