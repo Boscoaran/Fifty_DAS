@@ -1,19 +1,11 @@
 package com.example.proyecto1;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.Display;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -22,16 +14,14 @@ import java.util.Locale;
 
 public class AjustesActivity extends AppCompatActivity {
 
-    String idioma = "en";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
-
+        // Inicializa los Spinners de color de fondo y color principal
         Spinner spinnerBackground = findViewById(R.id.spinnerBackground);
         Spinner spinnerMain = findViewById(R.id.spinnerMain);
-
+        // Obtiene los recursos de la aplicación
         Resources res = this.getResources();
 
         String[] backgrounds = {res.getString(R.string.Azul), res.getString(R.string.Negro)};

@@ -112,8 +112,10 @@ public class GameBD extends SQLiteOpenHelper {
         hacerAmigos("Diego", "Bosco");
         hacerAmigos("Bosco", "Vicen");
         hacerAmigos("Vicen", "Bosco");
-        hacerAmigos("Diego", "Joel");
-        hacerAmigos("Joel", "Diego");
+        vota("Bosco", 1);
+        vota("Diego", 2);
+        vota("Vicen", 2);
+
     }
     public void cargarTxt(BufferedReader buff){
         try {

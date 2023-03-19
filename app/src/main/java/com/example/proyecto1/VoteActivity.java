@@ -108,8 +108,8 @@ public class VoteActivity extends AppCompatActivity {
     private void resizeBtns(float newSizeO1, Button btn1, Button btn2){
         float percent01 = newSizeO1;
         float percent02 = 1-percent01;
-        newSizeO1 = newSizeO1-0.05f;
-        float newSizeO2 = 1-newSizeO1-0.05f;
+        newSizeO1 = newSizeO1-0.025f;
+        float newSizeO2 = 1-newSizeO1-0.025f;
         if (newSizeO1>0.9){
             newSizeO1 = 0.85f;
             newSizeO2 = 0.10f;
@@ -123,7 +123,7 @@ public class VoteActivity extends AppCompatActivity {
         String btn1Text = btn1.getText()+"\n"+String.valueOf(Math.round(percent01 * 100));
         btn1.setText(btn1Text);
         ConstraintLayout.LayoutParams lpBtn2 = (ConstraintLayout.LayoutParams) btn2.getLayoutParams();
-        lpBtn2.matchConstraintPercentHeight = 1-newSizeO2;
+        lpBtn2.matchConstraintPercentHeight = newSizeO2;
         btn2.setLayoutParams(lpBtn2);
         String btn2Text = btn2.getText()+"\n"+String.valueOf(Math.round(percent02 * 100));
         btn2.setText(btn2Text);

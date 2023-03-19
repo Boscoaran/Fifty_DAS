@@ -56,19 +56,23 @@ public class MainActivity extends AppCompatActivity {
         BufferedReader buff = new BufferedReader(new InputStreamReader(f));
         db.prueba(buff);
 
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 11);
         }
         NotificationManager elManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder elBuilder = new NotificationCompat.Builder(this, "IdCanal");
-        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
+       if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.TIRAMISU){
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)!=PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 11);
+            }
             NotificationChannel elCanal = new NotificationChannel("IdCanal", "NombreCanal", NotificationManager.IMPORTANCE_DEFAULT);
             elManager.createNotificationChannel(elCanal);
         }
         elBuilder.setSmallIcon(R.drawable.notif).setContentTitle("50/50").setContentText(getString(R.string.vota_notif));
 
         Intent notificationIntent = new Intent(this, NotificationReceiver.class);
-        notificationIntent.putExtra("notificationId", "123");
+        notificationIntent.putExtra("notificationId", "11");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
@@ -78,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         c.set(Calendar.MINUTE, 0); //minuto
         c.set(Calendar.SECOND, 0); //segundo
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
         videoView.start();
 
     }

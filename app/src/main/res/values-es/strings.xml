@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Proyecto1</string>
+    <string name="app_name">Fifty</string>
     <string name="Contraseña">Contraseña</string>
     <string name="Nombre">Nombre</string>
     <string name="Acceder">Acceder</string>
