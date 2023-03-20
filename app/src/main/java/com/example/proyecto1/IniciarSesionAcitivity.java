@@ -18,9 +18,9 @@ public class IniciarSesionAcitivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_iniciar_sesion);
 
-        final GameBD db = GameBD.getmDB(this);
+        final GameBD db = GameBD.getmDB(this);//conexion BD
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);//alert dialog creado
         builder.setTitle("ERROR");
         builder.setPositiveButton(R.string.Aceptar, new DialogInterface.OnClickListener() {
             @Override
@@ -38,15 +38,15 @@ public class IniciarSesionAcitivity extends AppCompatActivity {
                 EditText passwordEditText = findViewById(R.id.editTextTextPassword);
                 String password = passwordEditText.getText().toString();
                 String result = db.usuarioCorrecto(name, password);
-                if ("CORRECT".equals(result)){
+                if ("CORRECT".equals(result)){//el usuario se crea correctamente
                     Intent intent = new Intent(IniciarSesionAcitivity.this, MainMenuActivity.class);
                     intent.putExtra("user", name);
                     Log.d(name, "onClick: ");
                     startActivity(intent);
-                } else if ("INCORRECT".equals(result)) {
+                } else if ("INCORRECT".equals(result)) {//contraseña incorrecta
                     builder.setMessage(R.string.error_contraseña_incorrecta);
                     builder.show();
-                } else {
+                } else {//no existe usuario con ese nombre
                     builder.setMessage(R.string.erro_no_existe_usuario);
                     builder.show();
                 }

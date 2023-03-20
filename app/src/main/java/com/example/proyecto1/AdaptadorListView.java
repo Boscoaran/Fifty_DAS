@@ -15,6 +15,7 @@ public class AdaptadorListView  extends BaseAdapter {
     private String[] lFriend;
     private int[] imagenes;
 
+    //LISTA PERSONALIZA
     public AdaptadorListView(Context pCtx, String[] pFriends){
         ctx = pCtx;
         lFriend = pFriends;
@@ -41,6 +42,8 @@ public class AdaptadorListView  extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflater.inflate(R.layout.lista_personalizada, null);
         TextView friend = (TextView) view.findViewById(R.id.friendName);
+
+        //Se podrá añadir foto de perfil
         //ImageView img = (ImageView) view.findViewById(R.id.image);
 
         friend.setText(lFriend[i]);

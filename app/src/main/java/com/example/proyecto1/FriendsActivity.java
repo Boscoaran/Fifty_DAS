@@ -32,19 +32,19 @@ public class FriendsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String user = intent.getStringExtra("user");
 
-        GameBD bd = GameBD.getmDB(this);
-        Cursor c = bd.getFriends(user);
-        if (c.moveToFirst()) {
+        GameBD bd = GameBD.getmDB(this);//conexion BD
+        Cursor c = bd.getFriends(user);//obtener lista de amigos
+        if (c.moveToFirst()) {//si tiene amigos
             ArrayList<String> friendsArrayList = new ArrayList<String>();
             friendsArrayList.add(c.getString(0));
-            while (c.moveToNext()) {
+            while (c.moveToNext()) {//añadir cada amigo
                 friendsArrayList.add(c.getString(0));
             }
             String[] friendsArray = Arrays.copyOf(friendsArrayList.toArray(), friendsArrayList.toArray().length, String[].class);
             ListView friends = (ListView) findViewById(R.id.list);
             AdaptadorListView adaptadorListView = new AdaptadorListView(getApplicationContext(), friendsArray);
             friends.setAdapter(adaptadorListView);
-        } else {
+        } else {//si no tiene amigos
             String[] friendsArray = {};
             ListView friends = (ListView) findViewById(R.id.list);
             AdaptadorListView adaptadorListView = new AdaptadorListView(getApplicationContext(), friendsArray);
@@ -53,7 +53,7 @@ public class FriendsActivity extends AppCompatActivity {
         ImageButton btnAddFriend = findViewById(R.id.addFriend);
         btnAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//pantala para añadir amigos
                 Intent intent = new Intent(FriendsActivity.this, SearchFriendActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
@@ -63,7 +63,7 @@ public class FriendsActivity extends AppCompatActivity {
         ImageButton btnAcceptFriend = findViewById(R.id.acceptFriend);
         btnAcceptFriend.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//pantalla para aceptar amigos
                 Intent intent = new Intent(FriendsActivity.this, AcceptFriendActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);

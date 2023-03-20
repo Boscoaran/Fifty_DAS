@@ -16,7 +16,7 @@ public class RegistroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
 
         Button btnRegistrarse = findViewById(R.id.btnRegistrase);
-        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {//registrarse
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegistroActivity.this, RegistrarseActivity.class));
@@ -24,7 +24,7 @@ public class RegistroActivity extends AppCompatActivity {
         });
 
         Button btnIniciarSesion = findViewById(R.id.btnIniciarSesion);
-        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
+        btnIniciarSesion.setOnClickListener(new View.OnClickListener() {//iniciar sesion
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegistroActivity.this, IniciarSesionAcitivity.class));

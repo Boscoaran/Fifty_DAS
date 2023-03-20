@@ -20,11 +20,11 @@ public class RegistrarseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
 
-        final GameBD db = GameBD.getmDB(this);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final GameBD db = GameBD.getmDB(this);//conexion BD
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);//crear dialogo
 
         Button btnRegistrarse = findViewById(R.id.btnRegistrarse2);
-        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
+        btnRegistrarse.setOnClickListener(new View.OnClickListener() {//registro
             @Override
             public void onClick(View v) {
                 EditText nameEditText = findViewById(R.id.editTextTextPersonName);
@@ -32,7 +32,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                 EditText passwordEditText = findViewById(R.id.editTextTextPassword);
                 String password = passwordEditText.getText().toString();
                 String existeUsuario = db.usuarioCorrecto(name, password);
-                if (!existeUsuario.equals("NO USER")) {
+                if (!existeUsuario.equals("NO USER")) {//ya existe usuario con ese nombre
                     builder.setTitle("ERROR");
                     builder.setMessage(R.string.error_usuario_existe);
                     builder.setPositiveButton(R.string.Aceptar, new DialogInterface.OnClickListener() {
@@ -42,7 +42,7 @@ public class RegistrarseActivity extends AppCompatActivity {
                         }
                     });
                     builder.show();
-                } else {
+                } else {//usuario creado correctamente
                     db.crearUsuario(name, password);
                     Intent intent = new Intent(RegistrarseActivity.this, MainMenuActivity.class);
                     intent.putExtra("user", name);

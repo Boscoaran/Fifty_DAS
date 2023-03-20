@@ -19,7 +19,7 @@ public class MainMenuActivity extends AppCompatActivity {
         Button btnVote = findViewById(R.id.btnVote);
         btnVote.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//cambiar a votar
                 Intent intent = new Intent(MainMenuActivity.this, VoteActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
@@ -28,7 +28,7 @@ public class MainMenuActivity extends AppCompatActivity {
         Button btnAjustes = findViewById(R.id.btnSettings);
         btnAjustes.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//cambiar a ajustes
                 Intent intent = new Intent(MainMenuActivity.this, AjustesActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);

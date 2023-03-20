@@ -8,7 +8,7 @@ import androidx.fragment.app.DialogFragment;
 
 public class DialogoAlerta extends DialogFragment {
 
-    public Dialog errorUsuarioExiste(){
+    public Dialog errorUsuarioExiste(){//Notificación por defecto
         if (getActivity()!=null) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("ERROR");

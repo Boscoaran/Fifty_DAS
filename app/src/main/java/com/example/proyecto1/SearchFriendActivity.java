@@ -21,7 +21,7 @@ public class SearchFriendActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String user = intent.getStringExtra("user");
 
-        GameBD bd = GameBD.getmDB(this);
+        GameBD bd = GameBD.getmDB(this);//conexion BD
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setNegativeButton(R.string.Volver, new DialogInterface.OnClickListener() {
@@ -32,26 +32,26 @@ public class SearchFriendActivity extends AppCompatActivity {
         });
 
         ImageButton btnSearch = findViewById(R.id.btnSearch);
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        btnSearch.setOnClickListener(new View.OnClickListener() {//Este boton no se esta mostrando
             @Override
             public void onClick(View view) {
                 EditText editTextFriend = findViewById(R.id.editTextFriend);
                 String userName = editTextFriend.getText().toString();
-                Cursor c = bd.searchUser(userName);
-                if (c.moveToFirst()){
+                Cursor c = bd.searchUser(userName);//buscar usuario por nombre
+                if (c.moveToFirst()){//usuario encontrado
                     String friend = c.getString(0);
                     builder.setTitle(R.string.AñadirAmigo);
                     builder.setMessage(R.string.PregAñadirAmigo);
                     builder.setPositiveButton(R.string.AñadirAmigo, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            bd.solicitarAmistad(user,friend);
+                            bd.solicitarAmistad(user,friend);//enviar solicitud de amistad al usuario
                         }
                     });
 
                     builder.show();
                 } else {
-                    builder.setTitle("ERROR");
+                    builder.setTitle("ERROR");//no existe el usuario buscado
                     builder.setMessage(R.string.erro_no_existe_usuario);
                     builder.setPositiveButton("", new DialogInterface.OnClickListener() {
                         @Override

@@ -1,7 +1,7 @@
 package com.example.proyecto1;
 
+//NO SE USA
 public class Usuario {
-
     private String nombre;
     private String password;
 

@@ -34,29 +34,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         VideoView videoView = findViewById(R.id.videoIntro);
-        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.v_intro);
+        Uri videoUri = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.v_intro); //cargar video
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         videoView.setVideoURI(videoUri);
-        Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();//se usa para la fecha de cargar el campeonato
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, 0);
         calendar.set(Calendar.MINUTE, 0);
 
-        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() { //al acabar el video cambia de activity
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
                 Intent intent = new Intent(MainActivity.this, RegistroActivity.class);
                 startActivity(intent);
             }
         });
-        this.deleteDatabase("game.db");
+        this.deleteDatabase("game.db");//borrar BD, de momento para pruebas se matiene así
         final GameBD db = GameBD.getmDB(this);
         db.createDB();
         InputStream f = getResources().openRawResource(R.raw.options);
         BufferedReader buff = new BufferedReader(new InputStreamReader(f));
         db.prueba(buff);
-
-
+        //notificaciones
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 11);
         }
