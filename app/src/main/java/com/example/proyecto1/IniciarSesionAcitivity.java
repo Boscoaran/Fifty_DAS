@@ -43,6 +43,7 @@ public class IniciarSesionAcitivity extends AppCompatActivity {
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("", "BOTON PULSADO");
                 EditText nameEditText = findViewById(R.id.editUserName);
                 String username = nameEditText.getText().toString();
                 EditText passwordEditText = findViewById(R.id.editPassword);

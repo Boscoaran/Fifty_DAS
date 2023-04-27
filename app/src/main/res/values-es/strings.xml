@@ -31,4 +31,9 @@
     <string name="Idioma">Idioma</string>
     <string name="Guardar">Guardar</string>
     <string name="usuario">Nombre de usuario</string>
+    <string name="solic_env">Solicitud de amistad enviada</string>
+    <string name="Son_amigos">Ya sois amigos</string>
+    <string name="solic_ya_enviada">Ya le has enviado una solicitud de amistad</string>
+    <string name="solicitud_pendiente">Tienes su solicitud pendiente de aceptar</string>
+    <string name="subir_img">Subir imagen</string>
 </resources>

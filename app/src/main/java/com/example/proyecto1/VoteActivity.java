@@ -78,7 +78,6 @@ public class VoteActivity extends AppCompatActivity {
                                 bd.gestion_votos(ctx, "votar", user, 1, "", new GameServerDB.OnResponseListener() {
                                     @Override
                                     public void onResponse(JSONObject response) throws JSONException {
-                                        Log.d("", "onResponse: "+response);
                                         int v1 = response.getInt("v1");
                                         int v2 = response.getInt("v2");
                                         int total = response.getInt("total");

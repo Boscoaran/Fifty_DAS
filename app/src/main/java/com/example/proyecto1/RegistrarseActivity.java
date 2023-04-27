@@ -26,7 +26,7 @@ public class RegistrarseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
 
-        final GameServerDB db = GameServerDB.getDB();//conexion BD
+        GameServerDB db = GameServerDB.getDB();//conexion BD
         AlertDialog.Builder builder = new AlertDialog.Builder(this);//crear dialogo
 
         Button btnRegistrarse = findViewById(R.id.btnRegistrarse2);

@@ -12,6 +12,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.android.volley.VolleyError;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -25,8 +31,24 @@ public class AcceptFriendActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String user = intent.getStringExtra("user");
 
-        GameBD bd = GameBD.getmDB(this);
-        Cursor c = bd.getSolicitudes(user); //Obtiene las solicitudes pendientes de la base de datos
+        GameServerDB bd = GameServerDB.getDB();
+
+        try {
+            bd.gestion_amigos(this, "obtener_amigos", "", user, new GameServerDB.OnResponseListener() {
+                @Override
+                public void onResponse(JSONObject response) throws JSONException {
+                    Log.d("", "onResponse: "+response);
+                }
+
+                @Override
+                public void onError(VolleyError error) {
+
+                }
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+/*
         if (c.moveToFirst()) { //Si hay solicitudes pendientes
             ArrayList<String> friendsArrayList = new ArrayList<String>();
             friendsArrayList.add(c.getString(0));
@@ -68,6 +90,6 @@ public class AcceptFriendActivity extends AppCompatActivity {
             }
         });
 
-        }
+        }*/
     }
 }

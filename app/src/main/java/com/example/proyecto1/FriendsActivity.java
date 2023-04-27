@@ -17,10 +17,17 @@ import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class FriendsActivity extends AppCompatActivity {
 
@@ -32,43 +39,66 @@ public class FriendsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String user = intent.getStringExtra("user");
 
-        GameBD bd = GameBD.getmDB(this);//conexion BD
-        Cursor c = bd.getFriends(user);//obtener lista de amigos
-        if (c.moveToFirst()) {//si tiene amigos
-            ArrayList<String> friendsArrayList = new ArrayList<String>();
-            friendsArrayList.add(c.getString(0));
-            while (c.moveToNext()) {//añadir cada amigo
-                friendsArrayList.add(c.getString(0));
-            }
-            String[] friendsArray = Arrays.copyOf(friendsArrayList.toArray(), friendsArrayList.toArray().length, String[].class);
-            ListView friends = (ListView) findViewById(R.id.list);
-            AdaptadorListView adaptadorListView = new AdaptadorListView(getApplicationContext(), friendsArray);
-            friends.setAdapter(adaptadorListView);
-        } else {//si no tiene amigos
-            String[] friendsArray = {};
-            ListView friends = (ListView) findViewById(R.id.list);
-            AdaptadorListView adaptadorListView = new AdaptadorListView(getApplicationContext(), friendsArray);
-            friends.setAdapter(adaptadorListView);
-        }
-        ImageButton btnAddFriend = findViewById(R.id.addFriend);
-        btnAddFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {//pantala para añadir amigos
-                Intent intent = new Intent(FriendsActivity.this, SearchFriendActivity.class);
-                intent.putExtra("user", user);
-                startActivity(intent);
-            }
-        });
+        GameServerDB bd = GameServerDB.getDB();
 
-        ImageButton btnAcceptFriend = findViewById(R.id.acceptFriend);
-        btnAcceptFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {//pantalla para aceptar amigos
-                Intent intent = new Intent(FriendsActivity.this, AcceptFriendActivity.class);
-                intent.putExtra("user", user);
-                startActivity(intent);
-            }
-        });
+        try {
+            bd.gestion_amigos(this, "obtener_amigos", "", user, new GameServerDB.OnResponseListener() {
+                @Override
+                public void onResponse(JSONObject response) throws JSONException {
+                    List<JSONObject> objetosJSON = new ArrayList<>();
+
+                    JSONArray jsonArray = new JSONArray(response);
+
+                    Log.d("", "onResponse: "+jsonArray.length());
+                    if (jsonArray.length()>0) {
+                        for (int i = 0; i < jsonArray.length(); i++) {
+                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            Log.d("", "DATOOOOOOOOS: "+jsonObject);
+                            objetosJSON.add(jsonObject);
+                        }
+
+                        for (JSONObject objetoJSON : objetosJSON) {
+                            ArrayList<String> friendsArrayList = new ArrayList<String>();
+                            friendsArrayList.add(objetoJSON.getString("amigo"));
+                            String[] friendsArray = Arrays.copyOf(friendsArrayList.toArray(), friendsArrayList.toArray().length, String[].class);
+                            ListView friends = (ListView) findViewById(R.id.list);
+                            AdaptadorListView adaptadorListView = new AdaptadorListView(getApplicationContext(), friendsArray);
+                            friends.setAdapter(adaptadorListView);
+                        }
+                    } else {//si no tiene amigos
+                        String[] friendsArray = {};
+                        ListView friends = (ListView) findViewById(R.id.list);
+                        AdaptadorListView adaptadorListView = new AdaptadorListView(getApplicationContext(), friendsArray);
+                        friends.setAdapter(adaptadorListView);
+                    }
+                    ImageButton btnAddFriend = findViewById(R.id.addFriend);
+                    btnAddFriend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {//pantala para añadir amigos
+                            Intent intent = new Intent(FriendsActivity.this, SearchFriendActivity.class);
+                            intent.putExtra("user", user);
+                            startActivity(intent);
+                        }
+                    });
+                    ImageButton btnAcceptFriend = findViewById(R.id.acceptFriend);
+                    btnAcceptFriend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {//pantalla para aceptar amigos
+                            Intent intent = new Intent(FriendsActivity.this, AcceptFriendActivity.class);
+                            intent.putExtra("user", user);
+                            startActivity(intent);
+                        }
+                    });
+                }
+
+                @Override
+                public void onError(VolleyError error) {
+
+                }
+            });
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 

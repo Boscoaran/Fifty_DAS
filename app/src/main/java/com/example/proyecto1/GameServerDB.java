@@ -33,7 +33,6 @@ public class GameServerDB {
     public void gestion_usuarios(Context ctx, String action, String username, String name, String password, OnResponseListener listener) throws IOException {
         String url = "http://ec2-54-93-62-124.eu-central-1.compute.amazonaws.com/jaranguren008/WEB/gestion_usuarios.php";
         RequestQueue queue = Volley.newRequestQueue(ctx);
-
         JSONObject jsonBody = new JSONObject();
         try {
             jsonBody.put("action", action);
@@ -48,7 +47,6 @@ public class GameServerDB {
                     @Override
                     public void onResponse(JSONObject response) {
                         // Manejar la respuesta
-                        Log.d("TAG", "onResponse: "+response);
                         try {
                             listener.onResponse(response);
                         } catch (JSONException e) {
@@ -83,7 +81,39 @@ public class GameServerDB {
                     @Override
                     public void onResponse(JSONObject response) {
                         // Manejar la respuesta
-                        Log.d("TAG", "onResponse: "+response);
+                        try {
+                            listener.onResponse(response);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // Manejar el error
+                listener.onError(error);
+            }
+        });
+        queue.add(request);
+    }
+
+    public void gestion_amigos(Context ctx, String action, String amigo, String username, OnResponseListener listener) throws IOException {
+        String url = "http://ec2-54-93-62-124.eu-central-1.compute.amazonaws.com/jaranguren008/WEB/gestion_amigos.php";
+        RequestQueue queue = Volley.newRequestQueue(ctx);
+
+        JSONObject jsonBody = new JSONObject();
+        try {
+            jsonBody.put("action", action);
+            jsonBody.put("user_amigo", amigo);
+            jsonBody.put("user", username);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, jsonBody,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // Manejar la respuesta
                         try {
                             listener.onResponse(response);
                         } catch (JSONException e) {

@@ -30,4 +30,9 @@
     <string name="Idioma">Language</string>
     <string name="Guardar">Save</string>
     <string name="usuario">Username</string>
+    <string name="solic_env">Friend request sent</string>
+    <string name="Son_amigos">You are already friends</string>
+    <string name="solic_ya_enviada">You have already sended a friend request</string>
+    <string name="solicitud_pendiente">You have his friend request pending</string>
+    <string name="subir_img">Upload image</string>
 </resources>

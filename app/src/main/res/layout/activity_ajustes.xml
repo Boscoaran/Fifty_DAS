@@ -11,8 +11,8 @@
         android:id="@+id/textView"
         android:layout_width="214dp"
         android:layout_height="30dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="48dp"
         android:text="@string/Color"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +45,7 @@
         android:layout_width="190dp"
         android:layout_height="27dp"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:text="@string/Fondo"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:text="@string/Idioma"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,5 +89,28 @@
             android:text="@string/Español"
             android:textSize="24sp"></RadioButton>
     </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imagePerfil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupIdioma"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/buttonImg"
+        android:layout_width="127dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="19dp"
+        android:background="@color/naranja"
+        android:text="@string/subir_img"
+        android:textColor="#212121"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagePerfil" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
