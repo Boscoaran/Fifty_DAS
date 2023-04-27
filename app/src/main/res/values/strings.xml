@@ -29,4 +29,5 @@
     <string name="Verde">Green</string>
     <string name="Idioma">Language</string>
     <string name="Guardar">Save</string>
+    <string name="usuario">Username</string>
 </resources>

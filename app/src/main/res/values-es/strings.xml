@@ -30,4 +30,5 @@
     <string name="Verde">Verde</string>
     <string name="Idioma">Idioma</string>
     <string name="Guardar">Guardar</string>
+    <string name="usuario">Nombre de usuario</string>
 </resources>

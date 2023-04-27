@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         BufferedReader buff = new BufferedReader(new InputStreamReader(f));
         db.prueba(buff);
         //notificaciones
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED){
+        /*if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 11);
         }
         NotificationManager elManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         c.set(Calendar.MINUTE, 0); //minuto
         c.set(Calendar.SECOND, 0); //segundo
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+        */
         videoView.start();
-
     }
 }
